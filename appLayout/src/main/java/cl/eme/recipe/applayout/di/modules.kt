@@ -1,23 +1,19 @@
-package cl.eme.recipemanager.di
+package cl.eme.recipe.applayout.di
 
 import cl.eme.recipe.core.domain.RecipesRepository
 import cl.eme.recipe.data.RecipesRepositoryImpl
-import cl.eme.recipe.listing.domain.GetIngredientsUseCase
-import cl.eme.recipe.listing.domain.GetIngredientsUseCaseImp
 import cl.eme.recipe.listing.domain.GetRecipesUseCase
 import cl.eme.recipe.listing.domain.GetRecipesUseCaseImp
 import cl.eme.recipe.listing.presentation.ListingViewModel
-import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import org.koin.androidx.viewmodel.dsl.viewModel
 
-val appModule = module {
-    // single instance of repository
+val listingAppModule = module {
+    // single instance of CounterRepository
     single<RecipesRepository> { RecipesRepositoryImpl() }
 
     // single instance of use cases
     single<GetRecipesUseCase> { GetRecipesUseCaseImp(get()) }
-    single<GetIngredientsUseCase> { GetIngredientsUseCaseImp(get()) }
-
 
     // MyViewModel ViewModel
     viewModel { ListingViewModel(get()) }

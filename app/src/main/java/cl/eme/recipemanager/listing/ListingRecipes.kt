@@ -21,9 +21,9 @@ import cl.eme.recipemanager.R
 import cl.eme.recipemanager.RecipesTopBar
 import cl.eme.recipemanager.ui.theme.RecipeManagerTheme
 import cl.eme.recipemanager.ui.theme.Shapes
-import cl.eme.rm.core.domain.dto.Ingredient
-import cl.eme.rm.core.domain.dto.Recipe
-import cl.eme.rm.listing.presentation.ListingViewModel
+import cl.eme.recipe.core.domain.dto.Ingredient
+import cl.eme.recipe.core.domain.dto.Recipe
+import cl.eme.recipe.listing.presentation.ListingViewModel
 import com.google.accompanist.coil.rememberCoilPainter
 import org.koin.java.KoinJavaComponent
 
