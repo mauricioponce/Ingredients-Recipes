@@ -38,7 +38,7 @@ android {
 dependencies {
     implementation project(path: ':core')
     implementation project(path: ':data')
-    implementation project(path: ':listingFeature')
+    implementation project(path: ':features')
 
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'

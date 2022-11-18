@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/listingFragment"
-        android:name="cl.eme.rm.applayout.listing.ListingFragment"
+        android:name="cl.eme.recipe.applayout.listing.ListingFragment"
         android:label="ListingFragment" />
 </navigation>
