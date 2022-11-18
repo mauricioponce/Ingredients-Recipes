@@ -1,9 +1,11 @@
-package cl.eme.rm.newrecipe.businesslogic
+package cl.eme.rm.newRecipe.businesslogic
 
 import cl.eme.rm.core.domain.BResult
 import cl.eme.rm.core.domain.RecipesRepository
 import cl.eme.rm.core.domain.SimpleResult
 import cl.eme.rm.core.domain.dto.Recipe
+import cl.eme.rm.newrecipe.businesslogic.NewRecipeUseCase
+import cl.eme.rm.newrecipe.businesslogic.NewRecipeUseCaseImp
 import com.google.common.truth.Truth.assertThat
 import org.junit.After
 
