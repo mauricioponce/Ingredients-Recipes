@@ -4,8 +4,8 @@ buildscript {
         compose_version = '1.0.1'
         koin_version = '3.0.2'
         junit_version = '4.13.2'
-        truth_version = '1.4.0'
-        timber_version = '4.7.1'
+        truth_version = '1.5.0'
+        timber_version = '5.0.1'
     }
     repositories {
         google()
