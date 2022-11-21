@@ -1,9 +1,9 @@
-package cl.eme.recipe.newrecipe.presentation
+package cl.eme.recipe.newRecipe.presentation
 
 import androidx.lifecycle.ViewModel
 import cl.eme.recipe.core.domain.dto.Ingredient
 import cl.eme.recipe.core.domain.dto.Recipe
-import cl.eme.recipe.newrecipe.businesslogic.NewRecipeUseCase
+import cl.eme.recipe.newRecipe.domain.NewRecipeUseCase
 
 data class RecipeView(val name: String, val ingredient: List<Ingredient>, val protein: String, val prepTime: Int)
 

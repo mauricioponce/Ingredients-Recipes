@@ -1,4 +1,4 @@
-package cl.eme.recipe.newrecipe.businesslogic
+package cl.eme.recipe.newRecipe.domain
 
 import cl.eme.recipe.core.domain.RecipesRepository
 import cl.eme.recipe.core.domain.SimpleResult

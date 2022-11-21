@@ -4,8 +4,6 @@ import cl.eme.recipe.core.domain.BResult
 import cl.eme.recipe.core.domain.RecipesRepository
 import cl.eme.recipe.core.domain.SimpleResult
 import cl.eme.recipe.core.domain.dto.Recipe
-import cl.eme.recipe.newrecipe.businesslogic.NewRecipeUseCase
-import cl.eme.recipe.newrecipe.businesslogic.NewRecipeUseCaseImp
 import com.google.common.truth.Truth.assertThat
 import org.junit.After
 
