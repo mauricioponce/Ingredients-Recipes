@@ -13,6 +13,11 @@
       </map>
     </option>
   </component>
+  <component name="EntryPointsManager">
+    <entry_points version="2.0">
+      <entry_point TYPE="method" FQNAME="cl.eme.recipemanager.MainActivityKt void RecipesTopBar()" />
+    </entry_points>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
