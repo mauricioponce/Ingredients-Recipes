@@ -1,8 +1,7 @@
 package cl.eme.recipe.listing.domain
 
-import cl.eme.recipe.core.domain.BResult
+import cl.eme.recipe.core.domain.Result
 import cl.eme.recipe.core.domain.RecipesRepository
-import cl.eme.recipe.core.domain.SimpleResult
 import cl.eme.recipe.core.domain.dto.Ingredient
 import com.google.common.truth.Truth.assertThat
 import org.junit.After
@@ -41,36 +40,36 @@ class GetIngredientsUseCaseImpTest : KoinTest {
     @Test
     fun `getIngredients should return an empty list`() {
         // given
-        Mockito.`when`(mockRepository.getIngredients()).thenReturn(BResult.Success(emptyList()))
+        Mockito.`when`(mockRepository.getIngredients()).thenReturn(Result.Success(emptyList()))
 
         // when
-        val result: SimpleResult<List<Ingredient>> = getIngredientsUseCase()
+        val result: Result<List<Ingredient>> = getIngredientsUseCase()
 
         // then
         assertThat(result).isNotNull()
-        assertThat(result).isInstanceOf(BResult.Success::class.java)
+        assertThat(result).isInstanceOf(Result.Success::class.java)
 
-        with(result as BResult.Success) {
-            assertThat(value).isNotNull()
-            assertThat(value).isEmpty()
+        with(result as Result.Success) {
+            assertThat(data).isNotNull()
+            assertThat(data).isEmpty()
         }
     }
 
     @Test
     fun `getIngredients return a failure response`() {
         // given
-        Mockito.`when`(mockRepository.getIngredients()).thenReturn(BResult.Failure(Exception()))
+        Mockito.`when`(mockRepository.getIngredients()).thenReturn(Result.Failure(Result.Error()))
 
         // when
-        val result: SimpleResult<List<Ingredient>> = getIngredientsUseCase()
+        val result: Result<List<Ingredient>> = getIngredientsUseCase()
 
         // then
         assertThat(result).isNotNull()
-        assertThat(result).isInstanceOf(BResult.Failure::class.java)
+        assertThat(result).isInstanceOf(Result.Failure::class.java)
 
-        with(result as BResult.Failure) {
-            assertThat(error).isNotNull()
-            assertThat(error).isInstanceOf(Exception::class.java)
+        with(result as Result.Failure) {
+            assertThat(cause).isNotNull()
+            assertThat(cause).isInstanceOf(Result.Error::class.java)
         }
     }
 
@@ -78,19 +77,19 @@ class GetIngredientsUseCaseImpTest : KoinTest {
     fun `getIngredients return a successful response with 1 element`() {
         // given
         Mockito.`when`(mockRepository.getIngredients())
-            .thenReturn(BResult.Success(listOf(Ingredient(1, "ingredient"))))
+            .thenReturn(Result.Success(listOf(Ingredient(1, "ingredient"))))
 
         // when
-        val result: SimpleResult<List<Ingredient>> = getIngredientsUseCase()
+        val result: Result<List<Ingredient>> = getIngredientsUseCase()
 
         // then
         assertThat(result).isNotNull()
-        assertThat(result).isInstanceOf(BResult.Success::class.java)
+        assertThat(result).isInstanceOf(Result.Success::class.java)
         assertThat(result).isNotNull()
 
-        with(result as BResult.Success) {
-            assertThat(value).isNotNull()
-            assertThat(value).hasSize(1)
+        with(result as Result.Success) {
+            assertThat(data).isNotNull()
+            assertThat(data).hasSize(1)
         }
     }
 }
