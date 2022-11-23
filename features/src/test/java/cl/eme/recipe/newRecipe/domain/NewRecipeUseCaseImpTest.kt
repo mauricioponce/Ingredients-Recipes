@@ -42,16 +42,16 @@ class NewRecipeUseCaseImpTest : KoinTest {
     fun `newRecipe received a recipe and can create it `() {
         // given
         val recipe = Recipe(1, "recipe name", listOf(), "protein", 30, "")
-        Mockito.`when`(mockRepository.createRecipe(recipe)).thenReturn(Result.Success(recipe))
+        Mockito.`when`(mockRepository.createRecipe(recipe)).thenReturn(Result.Ok(recipe))
 
         // when
         val result: Result<Recipe> = newRecipeUseCase(recipe)
 
         // Then
         assertThat(result).isNotNull()
-        assertThat(result).isInstanceOf(Result.Success::class.java)
+        assertThat(result).isInstanceOf(Result.Ok::class.java)
 
-        with(result as Result.Success) {
+        with(result as Result.Ok) {
             assertThat(data).isNotNull()
             assertThat(data).isEqualTo(recipe)
         }

@@ -83,12 +83,12 @@ class RecipesRepositoryImpl : RecipesRepository {
         )
     )
 
-    override fun getRecipes(): Result<List<Recipe>> = Result.Success(recipes)
+    override fun getRecipes(): Result<List<Recipe>> = Result.Ok(recipes)
 
     override fun createRecipe(recipe: Recipe): Result<Recipe> {
         recipes.add(recipe)
-        return Result.Success(recipe)
+        return Result.Ok(recipe)
     }
 
-    override fun getIngredients(): Result<List<Ingredient>> = Result.Success(ingredients)
+    override fun getIngredients(): Result<List<Ingredient>> = Result.Ok(ingredients)
 }

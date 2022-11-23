@@ -40,16 +40,16 @@ class GetIngredientsUseCaseImpTest : KoinTest {
     @Test
     fun `getIngredients should return an empty list`() {
         // given
-        Mockito.`when`(mockRepository.getIngredients()).thenReturn(Result.Success(emptyList()))
+        Mockito.`when`(mockRepository.getIngredients()).thenReturn(Result.Ok(emptyList()))
 
         // when
         val result: Result<List<Ingredient>> = getIngredientsUseCase()
 
         // then
         assertThat(result).isNotNull()
-        assertThat(result).isInstanceOf(Result.Success::class.java)
+        assertThat(result).isInstanceOf(Result.Ok::class.java)
 
-        with(result as Result.Success) {
+        with(result as Result.Ok) {
             assertThat(data).isNotNull()
             assertThat(data).isEmpty()
         }
@@ -58,36 +58,31 @@ class GetIngredientsUseCaseImpTest : KoinTest {
     @Test
     fun `getIngredients return a failure response`() {
         // given
-        Mockito.`when`(mockRepository.getIngredients()).thenReturn(Result.Failure(Result.Error()))
+        Mockito.`when`(mockRepository.getIngredients()).thenReturn(Result.Err.NetworkConnection)
 
         // when
         val result: Result<List<Ingredient>> = getIngredientsUseCase()
 
         // then
         assertThat(result).isNotNull()
-        assertThat(result).isInstanceOf(Result.Failure::class.java)
-
-        with(result as Result.Failure) {
-            assertThat(cause).isNotNull()
-            assertThat(cause).isInstanceOf(Result.Error::class.java)
-        }
+        assertThat(result).isInstanceOf(Result.Err::class.java)
     }
 
     @Test
     fun `getIngredients return a successful response with 1 element`() {
         // given
         Mockito.`when`(mockRepository.getIngredients())
-            .thenReturn(Result.Success(listOf(Ingredient(1, "ingredient"))))
+            .thenReturn(Result.Ok(listOf(Ingredient(1, "ingredient"))))
 
         // when
         val result: Result<List<Ingredient>> = getIngredientsUseCase()
 
         // then
         assertThat(result).isNotNull()
-        assertThat(result).isInstanceOf(Result.Success::class.java)
+        assertThat(result).isInstanceOf(Result.Ok::class.java)
         assertThat(result).isNotNull()
 
-        with(result as Result.Success) {
+        with(result as Result.Ok) {
             assertThat(data).isNotNull()
             assertThat(data).hasSize(1)
         }

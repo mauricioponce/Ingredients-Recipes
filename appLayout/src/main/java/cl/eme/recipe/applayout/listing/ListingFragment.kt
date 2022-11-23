@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import cl.eme.recipe.applayout.databinding.FragmentListingBinding
+import cl.eme.recipe.core.domain.Result
+import cl.eme.recipe.core.exception.NoConnection
 import cl.eme.recipe.listing.presentation.ListingViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -26,10 +28,24 @@ class ListingFragment : Fragment() {
 
         bindAdapter()
 
-        //CoroutineScope(Dispatchers.IO).launch { init() }
         init()
 
+        registerListeners()
+
         return binding.root
+    }
+
+    private fun registerListeners() {
+        cViewModel.recipes.observe(viewLifecycleOwner){
+            adapter.update(it)
+        }
+
+        cViewModel.err.observe(viewLifecycleOwner) {
+            when(it) {
+                is Result.Err.NetworkConnection -> showErrorConnection()
+                else -> { showGeneralError() }
+            }
+        }
     }
 
     private fun bindAdapter() {
@@ -38,6 +54,15 @@ class ListingFragment : Fragment() {
     }
 
     private fun init() {
-        adapter.update(cViewModel.getRecipes())
+        cViewModel.getRecipes()
     }
+
+    private fun showGeneralError() {
+
+    }
+
+    private fun showErrorConnection() {
+
+    }
+
 }
