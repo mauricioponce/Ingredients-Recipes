@@ -1,7 +1,7 @@
-package cl.eme.recipe.listing.presentation
+package cl.eme.recipemanager.listing
 
 import androidx.lifecycle.ViewModel
-import cl.eme.recipe.core.domain.BResult
+import cl.eme.recipe.core.domain.Result
 import cl.eme.recipe.core.domain.dto.Recipe
 import cl.eme.recipe.listing.domain.GetRecipesUseCase
 
@@ -9,8 +9,9 @@ class ListingViewModel (private val getRecipesUseCase: GetRecipesUseCase) : View
 
     fun getRecipes() : List<Recipe> {
         return when (val result = getRecipesUseCase()) {
-            is BResult.Success -> (result.value)
-            is BResult.Failure -> (emptyList())
+            is Result.Right -> result.value
+            is Result.Left -> emptyList()
         }
     }
 }
+

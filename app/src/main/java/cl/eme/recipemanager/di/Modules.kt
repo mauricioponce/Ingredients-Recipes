@@ -6,7 +6,7 @@ import cl.eme.recipe.listing.domain.GetIngredientsUseCase
 import cl.eme.recipe.listing.domain.GetIngredientsUseCaseImp
 import cl.eme.recipe.listing.domain.GetRecipesUseCase
 import cl.eme.recipe.listing.domain.GetRecipesUseCaseImp
-import cl.eme.recipe.listing.presentation.ListingViewModel
+import cl.eme.recipemanager.listing.ListingViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
