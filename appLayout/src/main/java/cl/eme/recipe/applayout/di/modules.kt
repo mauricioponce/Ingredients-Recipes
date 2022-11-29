@@ -1,10 +1,10 @@
 package cl.eme.recipe.applayout.di
 
+import cl.eme.recipe.applayout.listing.ListingViewModel
 import cl.eme.recipe.core.domain.RecipesRepository
 import cl.eme.recipe.data.RecipesRepositoryImpl
 import cl.eme.recipe.listing.domain.GetRecipesUseCase
 import cl.eme.recipe.listing.domain.GetRecipesUseCaseImp
-import cl.eme.recipe.listing.presentation.ListingViewModel
 import org.koin.dsl.module
 import org.koin.androidx.viewmodel.dsl.viewModel
 

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import cl.eme.recipe.applayout.databinding.FragmentListingBinding
-import cl.eme.recipe.listing.presentation.ListingViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListingFragment : Fragment() {
@@ -25,19 +24,21 @@ class ListingFragment : Fragment() {
         binding = FragmentListingBinding.inflate(layoutInflater)
 
         bindAdapter()
+        setListeners()
 
-        //CoroutineScope(Dispatchers.IO).launch { init() }
-        init()
+        cViewModel.getRecipes()
 
         return binding.root
+    }
+
+    private fun setListeners() {
+        cViewModel.recipes.observe(viewLifecycleOwner) {
+            adapter.update(it)
+        }
     }
 
     private fun bindAdapter() {
         adapter = RecipeAdapter()
         binding.recipesList.adapter = adapter
-    }
-
-    private fun init() {
-        adapter.update(cViewModel.getRecipes())
     }
 }

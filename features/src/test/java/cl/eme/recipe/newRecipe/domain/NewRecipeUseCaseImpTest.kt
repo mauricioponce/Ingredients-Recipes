@@ -1,9 +1,9 @@
 package cl.eme.recipe.newRecipe.domain
 
-import cl.eme.recipe.core.domain.BResult
+import cl.eme.recipe.core.domain.Result
 import cl.eme.recipe.core.domain.RecipesRepository
-import cl.eme.recipe.core.domain.SimpleResult
 import cl.eme.recipe.core.domain.dto.Recipe
+import cl.eme.recipe.core.failure.Failure
 import com.google.common.truth.Truth.assertThat
 import org.junit.After
 
@@ -43,16 +43,16 @@ class NewRecipeUseCaseImpTest : KoinTest {
     fun `newRecipe received a recipe and can create it `() {
         // given
         val recipe = Recipe(1, "recipe name", listOf(), "protein", 30, "")
-        Mockito.`when`(mockRepository.createRecipe(recipe)).thenReturn(BResult.Success(recipe))
+        Mockito.`when`(mockRepository.createRecipe(recipe)).thenReturn(Result.Right(recipe))
 
         // when
-        val result: SimpleResult<Recipe> = newRecipeUseCase(recipe)
+        val result: Result<Failure, Recipe> = newRecipeUseCase(recipe)
 
         // Then
         assertThat(result).isNotNull()
-        assertThat(result).isInstanceOf(BResult.Success::class.java)
+        assertThat(result).isInstanceOf(Result.Right::class.java)
 
-        with(result as BResult.Success) {
+        with(result as Result.Right) {
             assertThat(value).isNotNull()
             assertThat(value).isEqualTo(recipe)
         }
