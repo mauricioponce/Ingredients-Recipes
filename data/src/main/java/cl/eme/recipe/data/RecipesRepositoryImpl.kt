@@ -1,10 +1,10 @@
 package cl.eme.recipe.data
 
-import cl.eme.recipe.core.domain.BResult
+import cl.eme.recipe.core.domain.Result
 import cl.eme.recipe.core.domain.RecipesRepository
-import cl.eme.recipe.core.domain.SimpleResult
 import cl.eme.recipe.core.domain.dto.Ingredient
 import cl.eme.recipe.core.domain.dto.Recipe
+import cl.eme.recipe.core.failure.Failure
 
 class RecipesRepositoryImpl : RecipesRepository {
 
@@ -84,12 +84,12 @@ class RecipesRepositoryImpl : RecipesRepository {
         )
     )
 
-    override fun getRecipes(): SimpleResult<List<Recipe>> = BResult.Success(recipes)
+    override fun getRecipes(): Result<Failure, List<Recipe>> = Result.Right(recipes)
 
-    override fun createRecipe(recipe: Recipe): SimpleResult<Recipe> {
+    override fun createRecipe(recipe: Recipe): Result<Failure, Recipe> {
         recipes.add(recipe)
-        return BResult.Success(recipe)
+        return Result.Right(recipe)
     }
 
-    override fun getIngredients(): SimpleResult<List<Ingredient>> = BResult.Success(ingredients)
+    override fun getIngredients(): Result<Failure, List<Ingredient>> = Result.Right(ingredients)
 }
