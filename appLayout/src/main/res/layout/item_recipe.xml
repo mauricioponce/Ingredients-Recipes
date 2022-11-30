@@ -5,9 +5,10 @@
     android:id="@+id/item_recipe_card_id"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:elevation="4dp"
-    app:cardCornerRadius="16dp">
+    android:elevation="@dimen/card_elevation"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,24 +16,24 @@
 
         <ImageView
             android:id="@+id/ivRecipe"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="@dimen/recipe_img_height"
+            android:layout_height="@dimen/recipe_img_width"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:contentDescription="@string/recipe_name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/tvName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="Recipe name"
+            android:layout_marginStart="@dimen/margin_big"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:text="@string/recipe_name"
             android:textAlignment="textStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ivRecipe"
@@ -42,6 +43,7 @@
             android:id="@+id/iv_prep_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/preparation_time"
             app:layout_constraintBottom_toBottomOf="@+id/ivRecipe"
             app:layout_constraintStart_toStartOf="@+id/tvName"
             app:srcCompat="@drawable/ic_timer" />
@@ -49,12 +51,11 @@
         <TextView
             android:id="@+id/tv_prep_time"
             android:layout_width="105dp"
-            android:layout_height="19dp"
-            android:layout_marginStart="12dp"
-            android:text="Preparation time"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:text="@string/preparation_time"
             app:layout_constraintBottom_toBottomOf="@+id/iv_prep_time"
             app:layout_constraintStart_toEndOf="@+id/iv_prep_time"
             app:layout_constraintTop_toTopOf="@+id/iv_prep_time" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>
