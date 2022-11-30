@@ -56,6 +56,8 @@ dependencies {
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1'
 
+    implementation "io.coil-kt:coil:2.2.2"
+
     // Koin main features for Android (Scope,ViewModel ...)
     implementation("io.insert-koin:koin-android:$koin_version")
     // Koin Android - experimental builder extensions

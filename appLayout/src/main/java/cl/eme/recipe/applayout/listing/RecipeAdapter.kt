@@ -5,7 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import cl.eme.recipe.applayout.R
 import cl.eme.recipe.applayout.databinding.ItemRecipeBinding
+import coil.load
+import coil.transform.CircleCropTransformation
 
 class RecipeAdapter : ListAdapter<RecipeItemView, RecipeAdapter.RecipeViewHolder>(DiffCallback()) {
 
@@ -22,7 +25,11 @@ class RecipeAdapter : ListAdapter<RecipeItemView, RecipeAdapter.RecipeViewHolder
         fun bind(recipe: RecipeItemView) {
             binding.tvName.text = recipe.name
             binding.tvPrepTime.text = recipe.prepTime
-
+            binding.ivRecipe.load(recipe.imgUrl) {
+                crossfade(true)
+                placeholder(R.drawable.ic_timer)
+                transformations(CircleCropTransformation())
+            }
         }
     }
 }
