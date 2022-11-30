@@ -10,7 +10,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListingFragment : Fragment() {
 
-    private val cViewModel: ListingViewModel by viewModel()
+    private val viewModel: ListingViewModel by viewModel()
 
     private lateinit var binding: FragmentListingBinding
 
@@ -26,14 +26,14 @@ class ListingFragment : Fragment() {
         bindAdapter()
         setListeners()
 
-        cViewModel.getRecipes()
+        viewModel.getRecipes()
 
         return binding.root
     }
 
     private fun setListeners() {
-        cViewModel.recipes.observe(viewLifecycleOwner) {
-            adapter.update(it)
+        viewModel.recipes.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
         }
     }
 
