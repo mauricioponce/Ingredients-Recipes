@@ -26,8 +26,6 @@ class ListingFragment : Fragment() {
         bindAdapter()
         setListeners()
 
-        viewModel.getRecipes()
-
         return binding.root
     }
 
