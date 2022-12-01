@@ -16,19 +16,21 @@ class StubFactory {
         Ingredient(id = 9, name = "tomate"),
     )
 
+    val recipe = Recipe(
+        1,
+        "Zapallo italiano relleno",
+        listOf(
+            ingredients[0],
+            ingredients[1],
+            ingredients[2],
+        ),
+        "Carne molida, proteina de soya",
+        90,
+        "https://www.chicureohoy.cl/wp-content/uploads/2018/08/zapallo.png"
+    )
+
     val recipes: List<Recipe> =
         listOf(
-            Recipe(
-                1,
-                "Zapallo italiano relleno",
-                listOf(
-                    ingredients[0],
-                    ingredients[1],
-                    ingredients[2],
-                ),
-                "Carne molida, proteina de soya",
-                90,
-                "https://www.chicureohoy.cl/wp-content/uploads/2018/08/zapallo.png"
-            )
+            recipe
         )
 }

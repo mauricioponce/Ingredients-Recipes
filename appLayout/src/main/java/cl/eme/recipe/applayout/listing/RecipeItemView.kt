@@ -21,4 +21,4 @@ fun Recipe.toItemView(): RecipeItemView = RecipeItemView(
     this.imgUrl
 )
 
-fun getFormatPrepTime(prepTime: Int): String = "$prepTime"
+fun getFormatPrepTime(prepTime: Int): String = if (prepTime >= 0) "$prepTime" else "0"
