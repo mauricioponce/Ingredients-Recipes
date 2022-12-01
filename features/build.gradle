@@ -43,8 +43,8 @@ dependencies {
 
 
     testImplementation "junit:junit:$junit_version"
-    testImplementation("androidx.test.ext:truth:$truth_version")
-    testImplementation("org.mockito:mockito-core:3.10.0")
+    testImplementation "androidx.test.ext:truth:$truth_version"
+    testImplementation "org.mockito:mockito-core:3.10.0"
 
     // Koin Test for Kotlin Multiplatform
     testImplementation( "io.insert-koin:koin-test:$koin_version")
