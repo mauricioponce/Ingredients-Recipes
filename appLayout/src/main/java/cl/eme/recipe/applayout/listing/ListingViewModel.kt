@@ -1,5 +1,6 @@
 package cl.eme.recipe.applayout.listing
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import cl.eme.recipe.applayout.platform.BaseViewModel
@@ -15,7 +16,8 @@ class ListingViewModel (private val getRecipesUseCase: GetRecipesUseCase) : Base
         getRecipes()
     }
 
-    fun getRecipes() {
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    internal fun getRecipes() {
         when (val result = getRecipesUseCase()) {
             is Result.Right -> _recipes.value = result.value.map { it.toItemView() }
             is Result.Left -> handleFailure(result.failure)
