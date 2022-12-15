@@ -12,6 +12,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import cl.eme.recipemanager.listing.Listing
 import cl.eme.recipemanager.navigation.NavigationRoutes
+import cl.eme.recipemanager.ready2eat.listing.ReadyToEatListing
 import timber.log.Timber
 
 
@@ -33,8 +34,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 private fun MyApp() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = NavigationRoutes.listing) {
-        composable(NavigationRoutes.listing) { Listing(navController) }
+    NavHost(navController = navController, startDestination = NavigationRoutes.readyToEatListing) {
+        composable(NavigationRoutes.readyToEatListing) { ReadyToEatListing(navController) }
     }
 }
 

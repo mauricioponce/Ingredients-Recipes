@@ -11,5 +11,6 @@ class NavigationRoutes {
     companion object {
         const val listing = "listing"
         const val newRecipe = "addRecipe"
+        const val readyToEatListing = "readyToEatListing"
     }
 }
