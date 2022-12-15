@@ -1,12 +1,15 @@
 package cl.eme.recipe.ready2eat
 
+import cl.eme.recipe.assertData
+import cl.eme.recipe.assertLeft
+import cl.eme.recipe.assertNetworkConnectionFailure
+import cl.eme.recipe.assertRight
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import cl.eme.recipe.core.domain.Result
 import cl.eme.recipe.core.domain.dto.ReadyToEat
 import cl.eme.recipe.core.failure.Failure
-import com.google.common.truth.Truth.assertThat
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.dsl.module
@@ -90,28 +93,4 @@ class GetReadyToEatUseCaseImpTest : KoinTest {
                 locationDescription = "1"
             )
         )
-}
-
-private fun <F, S> Result<F, S>.assertNetworkConnectionFailure() {
-    with(this as Result.Left) {
-        assertThat(failure).isNotNull()
-        assertThat(failure).isInstanceOf(Failure.NetworkConnection::class.java)
-    }
-}
-
-private fun <F, S> Result<F, S>.assertLeft() {
-    assertThat(this).isNotNull()
-    assertThat(this).isInstanceOf(Result.Left::class.java)
-}
-
-private fun <F, S> Result<F, S>.assertData(expectedList: S) {
-    with(this as Result.Right) {
-        assertThat(value).isNotNull()
-        assertThat(value).isEqualTo(expectedList)
-    }
-}
-
-private fun <F, S> Result<F, S>.assertRight() {
-    assertThat(this).isNotNull()
-    assertThat(this).isInstanceOf(Result.Right::class.java)
 }

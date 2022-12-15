@@ -1,5 +1,9 @@
 package cl.eme.recipe.listing.domain
 
+import cl.eme.recipe.assertData
+import cl.eme.recipe.assertLeft
+import cl.eme.recipe.assertNetworkConnectionFailure
+import cl.eme.recipe.assertRight
 import cl.eme.recipe.core.domain.RecipesRepository
 import cl.eme.recipe.core.domain.Result
 import cl.eme.recipe.core.domain.dto.Ingredient
@@ -41,19 +45,15 @@ class GetIngredientsUseCaseImpTest : KoinTest {
     @Test
     fun `getIngredients should return an empty list`() {
         // given
-        Mockito.`when`(mockRepository.getIngredients()).thenReturn(Result.Right(emptyList()))
+        val expectedList = emptyList<Ingredient>()
+        Mockito.`when`(mockRepository.getIngredients()).thenReturn(Result.Right(expectedList))
 
         // when
         val result: Result<Failure, List<Ingredient>> = getIngredientsUseCase()
 
         // then
-        assertThat(result).isNotNull()
-        assertThat(result).isInstanceOf(Result.Right::class.java)
-
-        with(result as Result.Right) {
-            assertThat(value).isNotNull()
-            assertThat(value).isEmpty()
-        }
+        result.assertRight()
+        result.assertData(expectedList)
     }
 
     @Test
@@ -65,32 +65,22 @@ class GetIngredientsUseCaseImpTest : KoinTest {
         val result: Result<Failure, List<Ingredient>> = getIngredientsUseCase()
 
         // then
-        assertThat(result).isNotNull()
-        assertThat(result).isInstanceOf(Result.Left::class.java)
-
-        with(result as Result.Left) {
-            assertThat(failure).isNotNull()
-            assertThat(failure).isInstanceOf(Failure.NetworkConnection::class.java)
-        }
+        result.assertLeft()
+        result.assertNetworkConnectionFailure()
     }
 
     @Test
     fun `getIngredients return a successful response with 1 element`() {
         // given
+        val expectedList = listOf(Ingredient(1, "ingredient"))
         Mockito.`when`(mockRepository.getIngredients())
-            .thenReturn(Result.Right(listOf(Ingredient(1, "ingredient"))))
+            .thenReturn(Result.Right(expectedList))
 
         // when
         val result: Result<Failure, List<Ingredient>> = getIngredientsUseCase()
 
         // then
-        assertThat(result).isNotNull()
-        assertThat(result).isInstanceOf(Result.Right::class.java)
-        assertThat(result).isNotNull()
-
-        with(result as Result.Right) {
-            assertThat(value).isNotNull()
-            assertThat(value).hasSize(1)
-        }
+        result.assertRight()
+        result.assertData(expectedList)
     }
 }

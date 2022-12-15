@@ -1,5 +1,7 @@
 package cl.eme.recipe.newRecipe.domain
 
+import cl.eme.recipe.assertData
+import cl.eme.recipe.assertRight
 import cl.eme.recipe.core.domain.Result
 import cl.eme.recipe.core.domain.RecipesRepository
 import cl.eme.recipe.core.domain.dto.Recipe
@@ -49,12 +51,7 @@ class NewRecipeUseCaseImpTest : KoinTest {
         val result: Result<Failure, Recipe> = newRecipeUseCase(recipe)
 
         // Then
-        assertThat(result).isNotNull()
-        assertThat(result).isInstanceOf(Result.Right::class.java)
-
-        with(result as Result.Right) {
-            assertThat(value).isNotNull()
-            assertThat(value).isEqualTo(recipe)
-        }
+        result.assertRight()
+        result.assertData(recipe)
     }
 }
