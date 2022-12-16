@@ -1,4 +1,4 @@
-package cl.eme.recipemanager.ready2eat.listing
+package cl.eme.recipemanager.ready2eat
 
 import cl.eme.recipe.core.domain.dto.ReadyToEat
 

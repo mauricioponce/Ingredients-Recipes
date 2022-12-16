@@ -7,6 +7,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,6 +25,8 @@ import cl.eme.recipemanager.RecipesTopBar
 import cl.eme.recipemanager.ui.theme.RecipeManagerTheme
 import cl.eme.recipemanager.ui.theme.Shapes
 import cl.eme.recipe.core.domain.dto.Ingredient
+import cl.eme.recipemanager.navigation.NavigationRoutes
+import cl.eme.recipemanager.ready2eat.ReadyToEatView
 import com.google.accompanist.coil.rememberCoilPainter
 import org.koin.java.KoinJavaComponent
 
@@ -45,6 +49,18 @@ fun ScrollingList(readyToEat: List<ReadyToEatView>, navController: NavController
 
     Scaffold(
         topBar = { RecipesTopBar() },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {navController.navigate(NavigationRoutes.readyToEatAdd)},
+                backgroundColor = Color(0xFFFFA726),
+                contentColor = Color.White
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = "Añadir"
+                )
+            }
+        },
         isFloatingActionButtonDocked = true,
         floatingActionButtonPosition = FabPosition.End
     ) {
@@ -100,59 +116,6 @@ fun RecipeTitleContent(name: String) =
         style = MaterialTheme.typography.h6,
         textAlign = TextAlign.Center
     )
-
-
-@Composable
-fun RecipeGraphicsContent(imgUrl: String) =
-    Row(
-        modifier = Modifier
-            .fillMaxWidth(), horizontalArrangement = Arrangement.Center
-    ) {
-        Image(
-            painter = rememberCoilPainter(
-                request = imgUrl,
-                previewPlaceholder = R.drawable.zapallo_relleno,
-                fadeIn = true
-            ),
-            contentDescription = stringResource(id = R.string.recipe_image_content_description),
-            modifier = Modifier
-                .height(200.dp)
-                .width(200.dp)
-        )
-    }
-
-
-@Composable
-fun RecipeIngredientsContent(ingredients: List<Ingredient>) {
-    ingredients.forEach {
-        Row(modifier = Modifier.padding(bottom = dimensionResource(id = R.dimen.padding_normal))) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_baseline_check_box_24),
-                contentDescription = "",
-                modifier = Modifier.padding(end = dimensionResource(id = R.dimen.padding_normal))
-            )
-            Text(text = it.name)
-        }
-
-    }
-}
-
-@Composable
-fun RecipeCookingTimeContent(prepTime: String) {
-    Row(
-        modifier = Modifier.padding(
-            top = dimensionResource(id = R.dimen.padding_normal),
-            bottom = dimensionResource(id = R.dimen.padding_big)
-        )
-    ) {
-        Icon(
-            painter = painterResource(id = R.drawable.ic_baseline_timelapse_24),
-            contentDescription = ""
-        )
-        Text(text = prepTime)
-    }
-}
-
 
 @Preview(showBackground = true, name = "listing recipes")
 @Composable

@@ -12,5 +12,6 @@ class NavigationRoutes {
         const val listing = "listing"
         const val newRecipe = "addRecipe"
         const val readyToEatListing = "readyToEatListing"
+        const val readyToEatAdd = "readyToEatAdd"
     }
 }

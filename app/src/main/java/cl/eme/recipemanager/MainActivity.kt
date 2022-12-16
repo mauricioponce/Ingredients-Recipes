@@ -10,8 +10,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import cl.eme.recipemanager.listing.Listing
 import cl.eme.recipemanager.navigation.NavigationRoutes
+import cl.eme.recipemanager.ready2eat.add.AddReadyToEatScreen
 import cl.eme.recipemanager.ready2eat.listing.ReadyToEatListing
 import timber.log.Timber
 
@@ -35,7 +35,8 @@ class MainActivity : ComponentActivity() {
 private fun MyApp() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = NavigationRoutes.readyToEatListing) {
-        composable(NavigationRoutes.readyToEatListing) { ReadyToEatListing(navController) }
+        composable(route = NavigationRoutes.readyToEatListing) { ReadyToEatListing(navController) }
+        composable(route = NavigationRoutes.readyToEatAdd) { AddReadyToEatScreen() }
     }
 }
 
