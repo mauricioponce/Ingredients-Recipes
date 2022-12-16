@@ -90,7 +90,8 @@ class GetReadyToEatUseCaseImpTest : KoinTest {
                 name = "porotos",
                 freezeDate = Date(),
                 maxDurationInDays = 50,
-                locationDescription = "1"
+                locationDescription = "1",
+                1
             )
         )
 }

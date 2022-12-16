@@ -6,12 +6,14 @@ data class ReadyToEatView(
     val name: String,
     val freezeDate: String,
     val maxDurationInDays: String,
-    val locationDescription: String
+    val locationDescription: String,
+    val quantity: Int
 )
 
 fun ReadyToEat.toView(): ReadyToEatView = ReadyToEatView(
     name = this.name,
     freezeDate = this.freezeDate.toString(),
     maxDurationInDays = this.maxDurationInDays.toString(),
-    locationDescription = this.locationDescription
+    locationDescription = this.locationDescription,
+    quantity = this.quantity
 )

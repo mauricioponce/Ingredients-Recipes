@@ -6,5 +6,6 @@ data class ReadyToEat(
     val name: String,
     val freezeDate: Date,
     val maxDurationInDays: Int,
-    val locationDescription: String
+    val locationDescription: String,
+    val quantity: Int
 )
