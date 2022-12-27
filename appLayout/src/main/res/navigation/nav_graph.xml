@@ -2,7 +2,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/listingFragment">
+    app:startDestination="@id/listingReadyToEatFragment">
+
+    <fragment
+        android:id="@+id/listingReadyToEatFragment"
+        android:name="cl.eme.recipe.applayout.readytoeat.listing.ListingReadyToEatFragment"
+        android:label="ListingReadyToEatFragment" />
 
     <fragment
         android:id="@+id/listingFragment"
