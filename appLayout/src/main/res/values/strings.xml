@@ -2,4 +2,7 @@
     <string name="app_name">RecipeManager</string>
     <string name="recipe_name">Recipe name</string>
     <string name="preparation_time">Preparation time</string>
+    <string name="max_duration">Max duration</string>
+    <string name="since">Since</string>
+    <string name="ready_to_eat_name">Name</string>
 </resources>

@@ -13,5 +13,4 @@ class ReadyToEatListingViewModel (private val getReadyToEatUseCase: GetReadyToEa
             is Result.Left -> emptyList()
         }
     }
-
 }

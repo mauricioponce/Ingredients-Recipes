@@ -11,7 +11,7 @@ import cl.eme.recipe.applayout.databinding.ItemReady2eatBinding
 class ReadyToEatAdapter : ListAdapter<ReadyToEatView, ReadyToEatAdapter.ReadyToEatViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReadyToEatViewHolder {
-        val itemBinding = ItemReady2eatBinding.inflate(LayoutInflater.from(parent.context))
+        val itemBinding = ItemReady2eatBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ReadyToEatViewHolder(itemBinding)
     }
 
@@ -20,8 +20,10 @@ class ReadyToEatAdapter : ListAdapter<ReadyToEatView, ReadyToEatAdapter.ReadyToE
     }
 
     class ReadyToEatViewHolder(private val binding: ItemReady2eatBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(recipe: ReadyToEatView) {
-            binding.tvName.text = recipe.name
+        fun bind(readyToEat: ReadyToEatView) {
+            binding.tvName.text = readyToEat.name
+            binding.tvSince.text = readyToEat.freezeDate
+            binding.tvMaxDuration.text = readyToEat.maxDurationInDays
         }
     }
 }

@@ -11,9 +11,23 @@ class ReadyToEatRepositoryImpl: ReadyToEatRepository {
     private val readyToEat: MutableList<ReadyToEat> = mutableListOf(
         ReadyToEat(
             name = "porotos",
-            freezeDate = Date(),
+            freezeDate = Date(1672102673),
             maxDurationInDays = 50,
-            locationDescription = "1",
+            locationDescription = "cajón 3",
+            1
+        ),
+        ReadyToEat(
+            name = "pantrucas",
+            freezeDate = Date(1672102673),
+            maxDurationInDays = 90,
+            locationDescription = "cajón 3",
+            1
+        ),
+        ReadyToEat(
+            name = "Quinoa con verduras",
+            freezeDate = Date(1672102673),
+            maxDurationInDays = 20,
+            locationDescription = "cajón 1",
             1
         )
     )

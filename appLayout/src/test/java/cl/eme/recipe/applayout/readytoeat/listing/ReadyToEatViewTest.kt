@@ -22,7 +22,7 @@ class ReadyToEatViewTest {
 
     private fun getReadyToEat(): ReadyToEat = ReadyToEat(
         name = "name",
-        freezeDate = Date(1672091782),
+        freezeDate = Date(1672103624),
         maxDurationInDays = 1,
         locationDescription = "location 1",
         quantity = 1
@@ -30,8 +30,8 @@ class ReadyToEatViewTest {
 
     private fun getItemView(): ReadyToEatView = ReadyToEatView(
         name = "name",
-        freezeDate = Date(1672091782),
-        maxDurationInDays = 1,
+        freezeDate = "20-01-70",
+        maxDurationInDays = "1",
         locationDescription = "location 1",
         quantity = 1
     )
