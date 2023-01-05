@@ -7,10 +7,20 @@
     <fragment
         android:id="@+id/listingReadyToEatFragment"
         android:name="cl.eme.recipe.applayout.readytoeat.listing.ListingReadyToEatFragment"
-        android:label="ListingReadyToEatFragment" />
+        android:label="ListingReadyToEatFragment" >
+        <action
+            android:id="@+id/action_listingReadyToEatFragment_to_newReadyToEatFragment"
+            app:destination="@id/newReadyToEatFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/listingFragment"
         android:name="cl.eme.recipe.applayout.listing.ListingFragment"
         android:label="ListingFragment" />
+
+    <fragment
+        android:id="@+id/newReadyToEatFragment"
+        android:name="cl.eme.recipe.applayout.readytoeat.new.AddReadyToEatFragment"
+        android:label="ListingReadyToEatFragment" />
+
 </navigation>

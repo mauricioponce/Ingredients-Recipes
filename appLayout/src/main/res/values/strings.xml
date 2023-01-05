@@ -5,4 +5,8 @@
     <string name="max_duration">Max duration</string>
     <string name="since">Since</string>
     <string name="ready_to_eat_name">Name</string>
+    <string name="quantity">Quantity</string>
+    <string name="ready_to_eat_add">Add Ready to Eat</string>
+    <string name="ready_to_eat_observation">Observation</string>
+    <string name="ready_to_eat_observation_description">Write some informartion like location or ingredients</string>
 </resources>

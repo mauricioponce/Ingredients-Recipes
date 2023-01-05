@@ -8,9 +8,8 @@ import cl.eme.recipe.data.ReadyToEatRepositoryImpl
 import cl.eme.recipe.data.RecipesRepositoryImpl
 import cl.eme.recipe.listing.domain.GetRecipesUseCase
 import cl.eme.recipe.listing.domain.GetRecipesUseCaseImp
-import cl.eme.recipe.ready2eat.GetReadyToEatUseCase
-import cl.eme.recipe.ready2eat.GetReadyToEatUseCaseImp
-import cl.eme.recipe.ready2eat.ReadyToEatRepository
+import cl.eme.recipe.newRecipe.domain.NewRecipeUseCaseImp
+import cl.eme.recipe.ready2eat.*
 import org.koin.dsl.module
 import org.koin.androidx.viewmodel.dsl.viewModel
 
@@ -22,6 +21,7 @@ val listingAppModule = module {
     // single instance of use cases
     single<GetRecipesUseCase> { GetRecipesUseCaseImp(get()) }
     single<GetReadyToEatUseCase> { GetReadyToEatUseCaseImp(get()) }
+    single<NewReadyToEatUseCase> { NewReadyToEatUseCaseImp(get()) }
 
     // MyViewModel ViewModel
     viewModel { ListingViewModel(get()) }

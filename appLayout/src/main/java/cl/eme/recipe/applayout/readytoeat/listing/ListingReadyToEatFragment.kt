@@ -5,10 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import cl.eme.recipe.applayout.R
 import cl.eme.recipe.applayout.databinding.FragmentReady2eatListingBinding
+import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListingReadyToEatFragment : Fragment() {
+
+
 
     private val viewModel: ReadyToEatViewModel by viewModel()
 
@@ -33,6 +39,14 @@ class ListingReadyToEatFragment : Fragment() {
         viewModel.readyToEat.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
+
+        binding.floatingActionButton.setOnClickListener {
+            navigateToAdd()
+        }
+    }
+
+    private fun navigateToAdd() {
+        NavHostFragment.findNavController(this).navigate(R.id.action_listingReadyToEatFragment_to_newReadyToEatFragment)
     }
 
     private fun bindAdapter() {

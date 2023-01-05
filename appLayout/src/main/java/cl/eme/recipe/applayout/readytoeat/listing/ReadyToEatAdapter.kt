@@ -26,13 +26,12 @@ class ReadyToEatAdapter : ListAdapter<ReadyToEatView, ReadyToEatAdapter.ReadyToE
             binding.tvMaxDuration.text = readyToEat.maxDurationInDays
         }
     }
-}
 
-private class DiffCallback : DiffUtil.ItemCallback<ReadyToEatView>() {
+    private class DiffCallback : DiffUtil.ItemCallback<ReadyToEatView>() {
+        override fun areItemsTheSame(oldItem: ReadyToEatView, newItem: ReadyToEatView) =
+            oldItem.name == newItem.name
 
-    override fun areItemsTheSame(oldItem: ReadyToEatView, newItem: ReadyToEatView) =
-        oldItem.name == newItem.name
-
-    override fun areContentsTheSame(oldItem: ReadyToEatView, newItem: ReadyToEatView) =
-        oldItem == newItem
+        override fun areContentsTheSame(oldItem: ReadyToEatView, newItem: ReadyToEatView) =
+            oldItem == newItem
+    }
 }

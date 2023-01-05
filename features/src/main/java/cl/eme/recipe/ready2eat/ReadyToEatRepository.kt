@@ -7,4 +7,6 @@ import cl.eme.recipe.core.domain.Result
 
 interface ReadyToEatRepository {
     fun getReadyToEat(): Result<Failure, List<ReadyToEat>>
+
+    fun createReadyToEat(readyToEat: ReadyToEat): Result<Failure, ReadyToEat>
 }
