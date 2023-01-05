@@ -14,8 +14,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListingReadyToEatFragment : Fragment() {
 
-
-
     private val viewModel: ReadyToEatViewModel by viewModel()
 
     private lateinit var binding: FragmentReady2eatListingBinding

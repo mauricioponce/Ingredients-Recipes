@@ -25,5 +25,5 @@ val listingAppModule = module {
 
     // MyViewModel ViewModel
     viewModel { ListingViewModel(get()) }
-    viewModel { ReadyToEatViewModel(get()) }
+    viewModel { ReadyToEatViewModel(get(), get()) }
 }

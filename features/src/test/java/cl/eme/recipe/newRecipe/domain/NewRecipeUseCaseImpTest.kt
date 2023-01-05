@@ -6,7 +6,6 @@ import cl.eme.recipe.core.domain.Result
 import cl.eme.recipe.core.domain.RecipesRepository
 import cl.eme.recipe.core.domain.dto.Recipe
 import cl.eme.recipe.core.failure.Failure
-import com.google.common.truth.Truth.assertThat
 import org.junit.After
 
 import org.junit.Before
@@ -54,4 +53,6 @@ class NewRecipeUseCaseImpTest : KoinTest {
         result.assertRight()
         result.assertData(recipe)
     }
+
+
 }

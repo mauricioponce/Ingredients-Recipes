@@ -35,4 +35,9 @@ class ReadyToEatRepositoryImpl: ReadyToEatRepository {
     override fun getReadyToEat(): Result<Failure, List<ReadyToEat>> {
         return Result.Right(readyToEat)
     }
+
+    override fun createReadyToEat(newReadyToEat: ReadyToEat): Result<Failure, ReadyToEat> {
+        this.readyToEat.add(newReadyToEat)
+        return Result.Right(newReadyToEat)
+    }
 }

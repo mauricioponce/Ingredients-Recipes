@@ -22,6 +22,14 @@ fun ReadyToEat.toItemView() = ReadyToEatView(
     this.quantity
 )
 
+fun ReadyToEatView.toDomain() = ReadyToEat(
+    this.name,
+    Date(),
+    this.maxDurationInDays.toInt(),
+    this.locationDescription,
+    this.quantity
+)
+
 
 val pattern = SimpleDateFormat("dd-MM-yy")
 private fun Date.toPrettyFormat(): String {
