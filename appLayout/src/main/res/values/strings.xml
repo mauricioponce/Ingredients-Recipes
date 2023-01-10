@@ -9,4 +9,5 @@
     <string name="ready_to_eat_add">Add Ready to Eat</string>
     <string name="ready_to_eat_observation">Observation</string>
     <string name="ready_to_eat_observation_description">Write some informartion like location or ingredients</string>
+    <string name="ready_to_eat_freeze_date">Freeze date</string>
 </resources>

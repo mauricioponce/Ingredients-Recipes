@@ -1,15 +1,14 @@
 package cl.eme.recipe.applayout.readytoeat.listing
 
 import android.util.Log
+import androidx.annotation.RequiresPermission
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import cl.eme.recipe.applayout.platform.BaseViewModel
 import cl.eme.recipe.core.domain.Result
-import cl.eme.recipe.core.domain.dto.ReadyToEat
 import cl.eme.recipe.ready2eat.GetReadyToEatUseCase
 import cl.eme.recipe.ready2eat.NewReadyToEatUseCase
-import java.util.*
 
 class ReadyToEatViewModel(
     private val getReadyToEatUseCase: GetReadyToEatUseCase,
@@ -18,6 +17,9 @@ class ReadyToEatViewModel(
 
     private val _recipes: MutableLiveData<List<ReadyToEatView>> = MutableLiveData()
     val readyToEat: LiveData<List<ReadyToEatView>> = _recipes
+
+    private val _newRecipe: MutableLiveData<ReadyToEatView> = MutableLiveData()
+    val newRecipe: LiveData<ReadyToEatView> = _newRecipe
 
     init {
         getRecipes()
@@ -34,7 +36,7 @@ class ReadyToEatViewModel(
     fun newReadyToEat(newReadyToEat: ReadyToEatView) {
         val a = newReadyToEat.toDomain()
         when(val result = newReadyToEatUseCase(a)) {
-            is Result.Right -> _recipes.value = listOf(result.value.toItemView())
+            is Result.Right -> _newRecipe.value = result.value.toItemView()
             is Result.Left -> handleFailure(result.failure)
         }
     }
